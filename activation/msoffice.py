@@ -93,7 +93,7 @@ def office():
 
     of = input('Enter: ')
 
-    while of not in [1, 2]:
+    while of not in ['1', '2']:
         print("Invalid option. 😒 dont test my patience")
         of = input('Enter: ')
 
