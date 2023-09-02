@@ -143,7 +143,7 @@ these are some of the windows 11/10 keys ok be hapy
 - 9CVG2-VNTWP-3VKBV-WQK9W-XW3GT
 - 6KGHG-6QV22-47MDP-VB8GB-VQ7DM
 
-# keys in order 
+# catogorized keys
 
 lol i didnt think this
 
