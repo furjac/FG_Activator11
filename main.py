@@ -23,8 +23,7 @@ SOFTWARE.
 """
 from colorama import Fore, Style
 import os
-from activation.windows11 import Activate_windows11
-from activation.windows10 import ActivateWindows10
+from activation.windows import Activate_windows
 from activation.msoffice import office
 import webbrowser
 
@@ -39,15 +38,13 @@ RESET = Style.RESET_ALL
 
 # ASCII art border for the menu
 menu = f"""
-{CYAN}{"-" * 91}
+{CYAN}{"-" * 92}
 ||                                      {GREEN}FG_Activator{CYAN}                                      ||
 ||{"-" * 88}||
-||          [1] {GREEN}Windows 11{CYAN}                 |       [2] {GREEN}Microsoft Office{CYAN}                   ||
+||          [1] {GREEN}Windows   {CYAN}                 |       [2] {GREEN}Microsoft Office{CYAN}                   ||
 ||{"-" * 88}||
-||          [3] {YELLOW}Windows 10{CYAN}                 |       [4] {YELLOW}Donate us{CYAN}                          ||
-||{"-" * 88}||
-||          [0] {RED}Exit{CYAN}                       |                                              ||
-{CYAN}{"-" * 90}
+||          [3] {YELLOW}Donate us{CYAN}                 |       [0] {RED}Exit{CYAN}                                ||
+{CYAN}{"-" * 92}
 """
 print(RESET)
 while True:
@@ -56,23 +53,21 @@ while True:
 
     op = input("Please specify what you want to activate: ")
 
-    while op not in ['1', '2', '3', '4', '0']:
+    while op not in ['1', '2', '3', '0']:
         print("Invalid option. 😒 choose a correct one")
         op = input("Please specify what you want to activate: ")
 
     if op == '1':
-        Activate_windows11()
+        os.system('cls')
+        Activate_windows()
         print('😘congrats u just activated windows 11')
         input("Press Enter to continue...")
     elif op == '2':
+        os.system('cls')
         office()
         print('😘congrats u just activated office')
         input("Press Enter to continue...")
     elif op == '3':
-        ActivateWindows10()
-        print('😘congrats u just activated windows 10')
-        input("Press Enter to continue...")
-    elif op == '4':
         webbrowser.open('https://fg-repacks.site/p/donate.html')
     elif op == '0':
         os.system('cls')
