@@ -1,3 +1,17 @@
+<p align="center">
+  <a href="https://github.com/furjac/FG_Activator11">
+    <img src="https://img.shields.io/github/license/furjac/FG_Activator11" alt="GitHub license" />
+  </a>
+  <a href="https://github.com/furjac/FG_Activator11/stargazers">
+    <img src="https://img.shields.io/github/stars/furjac/FG_Activator11" alt="GitHub stars" />
+  </a>
+  <img src="https://img.shields.io/github/downloads/furjac/FG_Activator11/total" alt="GitHub all releases" />
+  <a href="https://discord.gg/YN9RKxewsq">
+    <img src="https://img.shields.io/discord/1026098018929360967.svg?label=&logo=discord&logoColor=ffffff&color=5865F2" alt="Join the FG_Teams discord server" />
+  </a>
+  <img src="https://img.shields.io/github/v/release/furjac/FG_Activator11" alt="GitHub release (latest SemVer)" />
+</p>
+
 # FG_Activator11
 Activtate all product of microsoft in just one click. This exe is fully written in python and there is no hidden malware or trojan
 
@@ -13,9 +27,12 @@ Activtate all product of microsoft in just one click. This exe is fully written 
 Im not a dumb or stupid who put in virus and steal data i written everything in pure python and plz appreciate my work it took very long fr 
 for that plz donate us even a single penny matters [https://fg-repacks.site/p/donations.html](https://www.fg-repacks.site/p/donate.html)
 
+Plz make sure to raise issue if any error feel free to contact on discord no problem
+
 # keys
 
 these are some of the windows 11/10 keys ok be hapy
+- these keys will be getting more and more ill not say how ok thank me later
 
 - 6K2KY-BFH24-PJW6W-9GK29-TMPWP
 - 49PB6-6BJ6Y-KHGCQ-7DDY6-TF7CD
