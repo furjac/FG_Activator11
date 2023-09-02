@@ -11,4 +11,4 @@ Activtate all product of microsoft in just one click. This exe is fully written 
 # Donations
 
 Im not a dumb or stupid who put in virus and steal data i written everything in pure python and plz appreciate my work it took very long fr 
-for that plz donate us even a single penny matters [https://fg-repacks.site/p/donations.html](https://www.fg-repacks.site/p/donate.html)https://www.fg-repacks.site/p/donate.html
+for that plz donate us even a single penny matters [https://fg-repacks.site/p/donations.html](https://www.fg-repacks.site/p/donate.html)
