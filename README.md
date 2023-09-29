@@ -13,7 +13,7 @@
 </p>
 
 # FG_Activator11
-Activtate all product of microsoft in just one click. This exe is fully written in python and there is no hidden malware or trojan
+Activtate all product of microsoft in just one click.
 
 # Features
 
