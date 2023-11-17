@@ -23,15 +23,65 @@ SOFTWARE.
 """
 import os
 import time
+from colorama import Fore, Style
+
+GREEN = Fore.GREEN
+YELLOW = Fore.YELLOW
+CYAN = Fore.CYAN
+RED = Fore.RED
+RESET = Style.RESET_ALL
 
 
-def Activate_windows():
-    print('[+]Plz wait while we are checking')
-    print('[+]Message boxes will popup just press yes/ok')
-    os.system('slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX')
-    time.sleep(2)
-    print('[+]make sure keep ur antivirus off if any error')
-    os.system('slmgr /skms kms.loli.best')
-    time.sleep(2)
-    os.system('slmgr /ato')
-    print('thanks')
+def activate_windows(selected_option):
+    keys = {
+        '1': 'TX9XD-98N7V-6WMQ6-BX7FG-H8Q99',
+        '2': '7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH',
+        '3': 'W269N-WFGWX-YVC9B-4J6C9-T83GX',
+        '4': 'NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J',
+        '5': 'NW6C2-QMPVW-D7KKK-3GKT6-VCFB2',
+        '6': '6TP4R-GNPTD-KYYHQ-7B7DP-J447Y',
+        '7': 'NPPR9-FWDCX-D2C8J-H872K-2YT43',
+    }
+
+    if selected_option in keys:
+        print('[+] Please wait while we are checking')
+        print('[+] Message boxes will pop up; just press yes/ok')
+        os.system(f'slmgr /ipk {keys[selected_option]}')
+        time.sleep(2)
+        os.system('slmgr /skms kms.loli.best')
+        time.sleep(2)
+        os.system('slmgr /ato')
+    else:
+        print("Invalid option. Please choose a correct one")
+
+
+def windows_edition_selection():
+    print('\n\n\n\n')
+    selected_option = input('Select your Windows edition wisely > ')
+
+    while selected_option not in ['1', '2', '3', '4', '5', '6', '7']:
+        print("Invalid option. 😒 Choose a correct one")
+        selected_option = input("Please specify what you want to activate: ")
+
+    activate_windows(selected_option)
+
+
+def main():
+    print(f"            {CYAN}{'-' * 92}")
+    print(f"            ||                                      {GREEN}FG_Activator{CYAN}                                      ||")
+    print(f"            ||{'-' * 88}||")
+    print(f"            ||   [1] {GREEN}Windows Core         {CYAN}              |       [2] {GREEN}Core Single language              ||")
+    print(f"            ||{'-' * 88}||")
+    print(f"            ||   [3] {YELLOW}Professional         {CYAN}              |       [4] {RED}Professional Workstation          ||")
+    print(f"            ||{'-' * 88}||")
+    print(f"            ||   [5] {YELLOW}Education            {CYAN}              |       [6] {RED}Professional Education            ||")
+    print(f"            ||{'-' * 88}||")
+    print(f"            ||   [7] {YELLOW}Enterprise           {CYAN}              |       [0] {RED}Not implemented yet               ||")
+    print(f"            {CYAN}{'-' * 92}")
+
+    windows_edition_selection()
+    print(RESET)
+
+
+if __name__ == "__main__":
+    main()
