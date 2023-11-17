@@ -69,7 +69,6 @@ def version_check(url):
             print(f"Error downloading the latest release: {e}")
     else:
         print("You are using an updated version")
-        os.system('pause')
 
 version_check(release_url)
 
