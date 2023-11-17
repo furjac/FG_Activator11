@@ -24,6 +24,7 @@ SOFTWARE.
 import os
 import subprocess
 
+
 def run_command(command):
     try:
         subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, check=True)
@@ -59,74 +60,5 @@ def activate_office():
     subprocess.run(["cscript", "ospp.vbs", "/act"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
-def office_365():
-    print("Activating Office 365 ProPlus for FREE - FG_Teams")
-
-    # Change directory to the Office installation folder
-    office_path = os.environ.get("ProgramFiles", "") + "\\Microsoft Office\\Office16"
-    if not os.path.exists(office_path):
-        office_path = os.environ.get("ProgramFiles(x86)", "") + "\\Microsoft Office\\Office16"
-
-    if os.path.exists(office_path):
-        os.chdir(office_path)
-    else:
-        print("Office not found in the expected directory.")
-        return
-
-    # Install license files
-    license_dir = "..\\root\\Licenses16"
-    for license_file in os.listdir(license_dir):
-        if license_file.startswith("proplusvl_kms") or license_file.startswith("proplusvl_mak"):
-            run_command(f"cscript ospp.vbs /inslic:\"{os.path.join(license_dir, license_file)}\"")
-
-    print("Activating your Office...")
-    run_command("cscript //nologo slmgr.vbs /ckms >nul")
-    run_command("cscript //nologo ospp.vbs /setprt:1688 >nul")
-    run_command("cscript //nologo ospp.vbs /unpkey:WFG99 >nul")
-    run_command("cscript //nologo ospp.vbs /unpkey:DRTFM >nul")
-    run_command("cscript //nologo ospp.vbs /unpkey:BTDRB >nul")
-
-    # Set the product key
-    product_key = "XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99"
-    run_command(f"cscript //nologo ospp.vbs /inpkey:{product_key} >nul")
-
-    # KMS servers
-    kms_servers = ["kms7.MSGuides.com", "e8.us.to", "e9.us.to"]
-
-    for i, kms_server in enumerate(kms_servers, start=1):
-        if i > 10:
-            print("Server is busy and can't respond to your request. Please try again.")
-            break
-
-        print(f"Trying KMS server {i}...")
-        run_command(f"cscript //nologo ospp.vbs /sethst:{kms_server} >nul")
-
-        # Activate
-        activation_result = subprocess.run(
-            "cscript //nologo ospp.vbs /act", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
-        )
-
-        if "successful" in activation_result.stdout.decode().lower():
-            print("Activation successful!")
-            break
-        else:
-            print("Activation failed. Trying another server...")
-
-    print("Sorry, your version is not supported.")
-
-
 def office():
-    print('Plz chose the office version correctly\n\n')
-    print('1. Microsoft office 365')
-    print('2. Microsoft office 2021 (ltsc)')
-
-    of = input('Enter: ')
-
-    while of not in ['1', '2']:
-        print("Invalid option. 😒 dont test my patience")
-        of = input('Enter: ')
-
-    if of == '1':
-        office_365()
-    elif of == '2':
-        activate_office()
+    activate_office()
