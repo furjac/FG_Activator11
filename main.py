@@ -26,6 +26,52 @@ import os
 from activation.windows import main
 from activation.msoffice import office
 import webbrowser
+import re
+import requests
+import wget
+import sys
+
+badge_url = "https://img.shields.io/github/v/release/furjac/FG_Activator11"
+
+def get_latest_version(badge_url):
+    try:
+        response = requests.get(badge_url)
+        content = response.text
+
+        # Using regular expression to extract version from the badge URL
+        match = re.search(r'v(\d+\.\d+(\.\d+)?)', content)
+        if match:
+            return match.group(1)
+        else:
+            print("Unable to extract version.")
+            return None
+
+    except Exception as e:
+        print(f"Error retrieving version: {e}")
+        return None
+
+latest_version = get_latest_version(badge_url)
+
+
+version = '1.3'
+
+release_url = f'https://github.com/furjac/FG_Activator11/releases/download/v'+latest_version+'/FG_Activator.exe'
+
+def version_check(url):
+    if version < latest_version:
+        print('Updating....')
+        try:
+            filename = wget.download(url)
+            print("Update complete. Please restart the application.")
+            quit()
+            sys.exit()
+        except Exception as e:
+            print(f"Error downloading the latest release: {e}")
+    else:
+        print("You are using an updated version")
+        os.system('pause')
+
+version_check(release_url)
 
 
 def clear():
