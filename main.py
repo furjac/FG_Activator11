@@ -23,11 +23,14 @@ SOFTWARE.
 """
 from colorama import Fore, Style
 import os
-from activation.windows import Activate_windows
+from activation.windows import main
 from activation.msoffice import office
 import webbrowser
 
-os.system('cls')
+
+def clear():
+    os.system('cls')
+
 
 # Define colors
 GREEN = Fore.GREEN
@@ -38,18 +41,18 @@ RESET = Style.RESET_ALL
 
 # ASCII art border for the menu
 menu = f"""
-{CYAN}{"-" * 92}
-||                                      {GREEN}FG_Activator{CYAN}                                      ||
-||{"-" * 88}||
-||          [1] {GREEN}Windows   {CYAN}                 |       [2] {GREEN}Microsoft Office{CYAN}                   ||
-||{"-" * 88}||
-||          [3] {YELLOW}Donate us{CYAN}                 |       [0] {RED}Exit{CYAN}                                ||
-{CYAN}{"-" * 92}
+            {CYAN}{"-" * 92}
+            ||                                      {GREEN}FG_Activator{CYAN}                                      ||
+            ||{"-" * 88}||
+            ||          [1] {GREEN}Windows   {CYAN}                 |       [2] {GREEN}Microsoft Office{CYAN}                   ||
+            ||{"-" * 88}||
+            ||          [3] {YELLOW}Donate us{CYAN}                  |       [0] {RED}Exit{CYAN}                               ||
+            {CYAN}{"-" * 92}
 """
 print(RESET)
 while True:
-    os.system('cls')  # Clear the screen
-    print(menu)
+    clear()  # Clear the screen
+    print(menu+'\n\n\n\n')
 
     op = input("Please specify what you want to activate: ")
 
@@ -58,19 +61,19 @@ while True:
         op = input("Please specify what you want to activate: ")
 
     if op == '1':
-        os.system('cls')
-        Activate_windows()
+        clear()
+        main()
         print('😘congrats u just activated windows 11')
         input("Press Enter to continue...")
     elif op == '2':
-        os.system('cls')
+        clear()
         office()
         print('😘congrats u just activated office')
         input("Press Enter to continue...")
     elif op == '3':
         webbrowser.open('https://fg-repacks.site/p/donate.html')
     elif op == '0':
-        os.system('cls')
-        print(Fore.BLUE+'Thanks for using my tool'+Style.RESET_ALL)
-        print(Fore.LIGHTMAGENTA_EX+'Plz checkout my other works too'+Style.RESET_ALL)
+        clear()
+        print(Fore.BLUE + 'Thanks for using my tool' + Style.RESET_ALL)
+        print(Fore.LIGHTMAGENTA_EX + 'Plz checkout my other works too' + Style.RESET_ALL)
         break
