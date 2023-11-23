@@ -144,6 +144,7 @@ these are some of the windows 11/10 keys ok be hapy
 - 6KGHG-6QV22-47MDP-VB8GB-VQ7DM
 - N97JG-BGKM8-JGD6Y-QJ9MR-WFG6T
 - 6TWFX-N8TWV-Q63GM-Y62JX-RM32Y
+- 6GNFW-XJMHK- 6J7F3-XVDQ8- GVJXC
 
 # catogorized keys
 
