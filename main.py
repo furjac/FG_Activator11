@@ -23,15 +23,25 @@ SOFTWARE.
 """
 from colorama import Fore, Style
 import os
-from activation.windows import main
-from activation.msoffice import office
 import webbrowser
 import re
 import requests
 import wget
-import sys
+import subprocess
 
 badge_url = "https://img.shields.io/github/v/release/furjac/FG_Activator11"
+
+def main():
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(script_directory, "activation", "HWID.cmd")
+
+    subprocess.call(["cmd.exe", "/c", path])
+
+def office():
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(script_directory, "activation", "office.cmd")
+
+    subprocess.call(["cmd.exe", "/c", path])
 
 def get_latest_version(badge_url):
     try:
@@ -53,7 +63,7 @@ def get_latest_version(badge_url):
 latest_version = get_latest_version(badge_url)
 
 
-version = '1.3'
+version = '1.4'
 
 release_url = f'https://github.com/furjac/FG_Activator11/releases/download/v'+latest_version+'/FG_Activator.exe'
 
@@ -63,8 +73,6 @@ def version_check(url):
         try:
             filename = wget.download(url)
             print("Update complete. Please restart the application.")
-            quit()
-            sys.exit()
         except Exception as e:
             print(f"Error downloading the latest release: {e}")
     else:
@@ -108,13 +116,11 @@ while True:
     if op == '1':
         clear()
         main()
-        print('😘congrats u just activated windows 11')
         input("Press Enter to continue...")
     elif op == '2':
         clear()
         office()
-        print('😘congrats u just activated office')
-        input("Press Enter to continue...")
+        input('Press enter to continue....')
     elif op == '3':
         webbrowser.open('https://fg-repacks.site/p/donate.html')
     elif op == '0':
