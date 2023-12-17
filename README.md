@@ -14,6 +14,7 @@
 
 # FG_Activator11
 Activtate all product of microsoft in just one click.
+credit - Masgravel(permanent activation scripts) 
 
 # Features
 
