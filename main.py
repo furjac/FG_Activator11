@@ -58,7 +58,7 @@ def get_latest_version(badge_url):
 latest_version = get_latest_version(badge_url)
 
 
-version = '1.4'
+version = '1.6'
 
 release_url = f'https://github.com/furjac/FG_Activator11/releases/download/v'+latest_version+'/FG_Activator.exe'
 
