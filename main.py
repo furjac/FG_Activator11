@@ -22,26 +22,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 from colorama import Fore, Style
+from activation.office import activate_office
+from activation.windows import activate_windows
 import os
 import webbrowser
 import re
 import requests
 import wget
-import subprocess
 
 badge_url = "https://img.shields.io/github/v/release/furjac/FG_Activator11"
 
 def main():
-    script_directory = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(script_directory, "activation", "HWID.cmd")
-
-    subprocess.call(["cmd.exe", "/c", path])
+    activate_windows()
 
 def office():
-    script_directory = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(script_directory, "activation", "office.cmd")
-
-    subprocess.call(["cmd.exe", "/c", path])
+    activate_office()
 
 def get_latest_version(badge_url):
     try:
