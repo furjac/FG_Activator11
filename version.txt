@@ -1,0 +1,9 @@
+[Version]
+AppVersion=1.7
+FileDescription=Microsoft activator
+LegalCopyright=Copyright (c) 2024 FG_Teams
+CompanyName=FG_Teams
+InternalName=FG_Activator
+OriginalFilename=FG Activator.exe
+ProductVersion=1.7
+ProductName=FG_Activator11
