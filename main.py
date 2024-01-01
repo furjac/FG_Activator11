@@ -38,44 +38,6 @@ def main():
 def office():
     activate_office()
 
-def get_latest_version(badge_url):
-    try:
-        response = requests.get(badge_url)
-        content = response.text
-
-        # Using regular expression to extract version from the badge URL
-        match = re.search(r'v(\d+\.\d+(\.\d+)?)', content)
-        if match:
-            return match.group(1)
-        else:
-            print("Unable to extract version.")
-            return None
-
-    except Exception as e:
-        print(f"Error retrieving version: {e}")
-        return None
-
-latest_version = get_latest_version(badge_url)
-
-
-version = '1.6'
-
-release_url = f'https://github.com/furjac/FG_Activator11/releases/download/v'+latest_version+'/FG_Activator.exe'
-
-def version_check(url):
-    if version < latest_version:
-        print('Updating....')
-        try:
-            filename = wget.download(url)
-            print("Update complete. Please restart the application.")
-        except Exception as e:
-            print(f"Error downloading the latest release: {e}")
-    else:
-        print("You are using an updated version")
-
-version_check(release_url)
-
-
 def clear():
     os.system('cls')
 
