@@ -20,8 +20,9 @@ credit - Masgravel(permanent activation scripts)
 
 1. Activate any windows in one click
 2. Activate any version of office in one click
-3. What else u need bro
-4. thanks for using my tool
+3. Change any windows edition to other like home to pro edition
+4. What else u need bro
+5. thanks for using my tool
 
 # Donations
 
