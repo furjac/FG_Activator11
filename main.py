@@ -26,7 +26,7 @@ import os
 import webbrowser
 import subprocess
 import sys
-
+import shutil
 
 badge_url = "https://img.shields.io/github/v/release/furjac/FG_Activator11"
 
@@ -43,29 +43,43 @@ def get_resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
-def windows():
-    script_directory = os.path.dirname(os.path.abspath(__file__))
-    path = get_resource_path(os.path.join("activation", "windows.cmd"))
+def copy_to_desktop(source_path, destination_folder):
+    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+    destination_path = os.path.join(desktop_path, destination_folder)
 
-    subprocess.call(["cmd.exe", "/c", path], shell=True)
+    # Create destination folder on the desktop
+    os.makedirs(destination_path, exist_ok=True)
+
+    # Copy files to the destination folder
+    for file_name in os.listdir(source_path):
+        full_file_path = os.path.join(source_path, file_name)
+        if os.path.isfile(full_file_path):
+            shutil.copy(full_file_path, destination_path)
+
+    return destination_path
+
+def run_on_desktop(file_path):
+    subprocess.call(["cmd.exe", "/c", file_path], shell=True)
+
+def windows():
+    path = get_resource_path(os.path.join("activation", "windows.cmd"))
+    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
+    run_on_desktop(os.path.join(desktop_path, "windows.cmd"))
 
 def office():
-    script_directory = os.path.dirname(os.path.abspath(__file__))
     path = get_resource_path(os.path.join("activation", "ohook.cmd"))
-
-    subprocess.call(["cmd.exe", "/c", path], shell=True)
+    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
+    run_on_desktop(os.path.join(desktop_path, "ohook.cmd"))
 
 def trouble():
-    script_directory = os.path.dirname(os.path.abspath(__file__))
     path = get_resource_path(os.path.join("activation", "troubleshoot.cmd"))
-
-    subprocess.call(["cmd.exe", "/c", path], shell=True)
+    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
+    run_on_desktop(os.path.join(desktop_path, "troubleshoot.cmd"))
 
 def change():
-    script_directory = os.path.dirname(os.path.abspath(__file__))
     path = get_resource_path(os.path.join("activation", "change_editions.cmd"))
-
-    subprocess.call(["cmd.exe", "/c", path], shell=True)
+    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
+    run_on_desktop(os.path.join(desktop_path, "change_editions.cmd"))
 
 # Define colors
 GREEN = Fore.GREEN
@@ -117,6 +131,8 @@ while True:
         webbrowser.open('https://fg-repacks.site/p/donate.html')
     elif op == '0':
         clear()
-        print(Fore.BLUE + 'Thanks for using my tool' + Style.RESET_ALL)
+        print(Fore.BLUE + 'Thanks for using my tool\ncleaning up things for u' + Style.RESET_ALL)
+        desktop_path = os.path.join(os.path.expanduser("~"), "Desktop", "Activation_Files")
+        shutil.rmtree(desktop_path)
         print(Fore.LIGHTMAGENTA_EX + 'Plz checkout my other works too' + Style.RESET_ALL)
         break
