@@ -30,8 +30,10 @@ import shutil
 
 badge_url = "https://img.shields.io/github/v/release/furjac/FG_Activator11"
 
+
 def clear():
     os.system('cls')
+
 
 def get_resource_path(relative_path):
     try:
@@ -42,6 +44,7 @@ def get_resource_path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
+
 
 def copy_to_desktop(source_path, destination_folder):
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
@@ -58,28 +61,46 @@ def copy_to_desktop(source_path, destination_folder):
 
     return destination_path
 
+
 def run_on_desktop(file_path):
     subprocess.call(["cmd.exe", "/c", file_path], shell=True)
+
 
 def windows():
     path = get_resource_path(os.path.join("activation", "windows.cmd"))
     desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
     run_on_desktop(os.path.join(desktop_path, "windows.cmd"))
 
+
 def office():
     path = get_resource_path(os.path.join("activation", "ohook.cmd"))
     desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
     run_on_desktop(os.path.join(desktop_path, "ohook.cmd"))
+
 
 def trouble():
     path = get_resource_path(os.path.join("activation", "troubleshoot.cmd"))
     desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
     run_on_desktop(os.path.join(desktop_path, "troubleshoot.cmd"))
 
+
 def change():
     path = get_resource_path(os.path.join("activation", "change_editions.cmd"))
     desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
     run_on_desktop(os.path.join(desktop_path, "change_editions.cmd"))
+
+
+def KMS38():
+    path = get_resource_path(os.path.join("activation", "KMS8.cmd"))
+    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
+    run_on_desktop(os.path.join(desktop_path, "KMS38.cmd"))
+
+
+def KMS():
+    path = get_resource_path(os.path.join("activation", "KMS.cmd"))
+    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
+    run_on_desktop(os.path.join(desktop_path, "KMS.cmd"))
+
 
 # Define colors
 GREEN = Fore.GREEN
@@ -97,17 +118,19 @@ menu = f"""
             ||{"-" * 88}||
             ||          [3] {YELLOW}Troubleshoot{CYAN}               |       [4] {RED}Change Editions{CYAN}                    ||
             ||{"-" * 88}||
-            ||          [5] {RED}Donate us{CYAN}                  |       [0] {RED}Exit{CYAN}                               ||
+            ||          [5] {RED}Online KMS activation{CYAN}      |       [6] {RED}KMS38[38 years]{CYAN}                    ||
+            ||{"-" * 88}||
+            ||          [7] {RED}Donate us{CYAN}                  |       [0] {RED}Exit{CYAN}                               ||
             {CYAN}{"-" * 92}
 """
 print(RESET)
 while True:
     clear()  # Clear the screen
-    print(menu+'\n\n\n\n')
+    print(menu + '\n\n\n\n')
 
     op = input("Please specify what you want to activate: ")
 
-    while op not in ['1', '2', '3','4','5', '0']:
+    while op not in ['1', '2', '3', '4', '5', '6', '7', '0']:
         print("Invalid option. 😒 choose a correct one")
         op = input("Please specify what you want to activate: ")
 
@@ -128,6 +151,14 @@ while True:
         change()
         input('Press enter to continue...')
     elif op == '5':
+        clear()
+        KMS()
+        input('Press enter to continue...')
+    elif op == '6':
+        clear()
+        KMS38()
+        input('Press enter to continue...')
+    elif op == '7':
         webbrowser.open('https://fg-repacks.site/p/donate.html')
     elif op == '0':
         clear()
