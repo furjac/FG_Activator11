@@ -28,8 +28,6 @@ import subprocess
 import sys
 import shutil
 
-badge_url = "https://img.shields.io/github/v/release/furjac/FG_Activator11"
-
 
 def clear():
     os.system('cls')
@@ -63,7 +61,10 @@ def copy_to_desktop(source_path, destination_folder):
 
 
 def run_on_desktop(file_path):
-    subprocess.call(["cmd.exe", "/c", file_path], shell=True)
+    process = subprocess.Popen(["cmd.exe", "/c", file_path],
+                               shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    process.wait()
 
 
 def windows():
@@ -102,11 +103,25 @@ def KMS():
     run_on_desktop(os.path.join(desktop_path, "KMS.cmd"))
 
 
+def OEM():
+    path = get_resource_path(os.path.join(
+        "activation", "Extract_OEM_Folder.cmd"))
+    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
+    run_on_desktop(os.path.join(desktop_path, "Extract_OEM_Folder.cmd"))
+
+
+def status():
+    path = get_resource_path(os.path.join("activation", "status.cmd"))
+    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
+    run_on_desktop(os.path.join(desktop_path, "status.cmd"))
+
+
 # Define colors
 GREEN = Fore.GREEN
 YELLOW = Fore.YELLOW
 CYAN = Fore.CYAN
 RED = Fore.RED
+MAGENTA = Fore.MAGENTA
 RESET = Style.RESET_ALL
 
 # ASCII art border for the menu
@@ -116,11 +131,13 @@ menu = f"""
             ||{"-" * 88}||
             ||          [1] {GREEN}Windows   {CYAN}                 |       [2] {GREEN}Microsoft Office{CYAN}                   ||
             ||{"-" * 88}||
-            ||          [3] {YELLOW}Troubleshoot{CYAN}               |       [4] {RED}Change Editions{CYAN}                    ||
+            ||          [3] {YELLOW}Troubleshoot{CYAN}               |       [4] {YELLOW}Change Editions{CYAN}                    ||
             ||{"-" * 88}||
-            ||          [5] {RED}Online KMS activation{CYAN}      |       [6] {RED}KMS38[38 years]{CYAN}                    ||
+            ||          [5] {Fore.LIGHTBLUE_EX}Online KMS activation{CYAN}      |       [6] {Fore.LIGHTBLUE_EX}KMS38[38 years]{CYAN}                    ||
             ||{"-" * 88}||
-            ||          [7] {RED}Donate us{CYAN}                  |       [0] {RED}Exit{CYAN}                               ||
+            ||          [7] {MAGENTA}Extract OEM Folder{CYAN}         |       [8] {MAGENTA}Check activation status{CYAN}            ||
+            ||{"-" * 88}||
+            ||          [9] {RED}Donate us{CYAN}                  |       [0] {RED}exit{CYAN}                               ||
             {CYAN}{"-" * 92}
 """
 print(RESET)
@@ -130,7 +147,7 @@ while True:
 
     op = input("Please specify what you want to activate: ")
 
-    while op not in ['1', '2', '3', '4', '5', '6', '7', '0']:
+    while op not in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']:
         print("Invalid option. 😒 choose a correct one")
         op = input("Please specify what you want to activate: ")
 
@@ -159,11 +176,21 @@ while True:
         KMS38()
         input('Press enter to continue...')
     elif op == '7':
+        clear()
+        OEM()
+        input('Press enter to continue...')
+    elif op == '8':
+        clear()
+        status()
+        input('Press enter to continue...')
+    elif op == '9':
         webbrowser.open('https://fg-repacks.site/p/donate.html')
     elif op == '0':
         clear()
         print(Fore.BLUE + 'Thanks for using my tool\ncleaning up things for u' + Style.RESET_ALL)
-        desktop_path = os.path.join(os.path.expanduser("~"), "Desktop", "Activation_Files")
+        desktop_path = os.path.join(os.path.expanduser(
+            "~"), "Desktop", "Activation_Files")
         shutil.rmtree(desktop_path)
-        print(Fore.LIGHTMAGENTA_EX + 'Plz checkout my other works too' + Style.RESET_ALL)
+        print(Fore.LIGHTMAGENTA_EX +
+              'Plz checkout my other works too' + Style.RESET_ALL)
         break
