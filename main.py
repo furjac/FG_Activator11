@@ -67,6 +67,11 @@ def run_on_desktop(file_path):
     process.wait()
 
 
+def status_check(file_path):
+    subprocess.call(["cmd.exe", "/c", file_path],
+                    shell=True)
+
+
 def windows():
     path = get_resource_path(os.path.join("activation", "windows.cmd"))
     desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
@@ -113,7 +118,7 @@ def OEM():
 def status():
     path = get_resource_path(os.path.join("activation", "status.cmd"))
     desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
-    run_on_desktop(os.path.join(desktop_path, "status.cmd"))
+    status_check(os.path.join(desktop_path, "status.cmd"))
 
 
 # Define colors
