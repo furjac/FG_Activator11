@@ -33,6 +33,13 @@ def clear():
     os.system('cls')
 
 
+def unattended(para):
+    process = subprocess.Popen(
+        ["powershell", "-Command", f'& ([ScriptBlock]::Create((irm https://massgrave.dev/get))) /{para}'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    process.wait()
+
+
 def get_resource_path(relative_path):
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
@@ -73,15 +80,20 @@ def status_check(file_path):
 
 
 def windows():
-    path = get_resource_path(os.path.join("activation", "windows.cmd"))
-    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
-    run_on_desktop(os.path.join(desktop_path, "windows.cmd"))
+    unattended('HWID-NoEditionChange')
 
 
 def office():
-    path = get_resource_path(os.path.join("activation", "ohook.cmd"))
-    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
-    run_on_desktop(os.path.join(desktop_path, "ohook.cmd"))
+    clear()
+    print('1. Install ohook')
+    print('2. Uninstall ohook')
+    ask = input('Enter what u want to do > ')
+    if ask == '1':
+        unattended('Ohook')
+    elif ask == '2':
+        unattended('Ohook-Uninstall')
+    else:
+        print('Plz choose a valid option')
 
 
 def trouble():
@@ -97,15 +109,38 @@ def change():
 
 
 def KMS38():
-    path = get_resource_path(os.path.join("activation", "KMS8.cmd"))
-    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
-    run_on_desktop(os.path.join(desktop_path, "KMS38.cmd"))
+    clear()
+    print('1. Windows KMS38 activation')
+    print('2. remove protection KMS38')
+    ask = input('\nEnter what u want to activate > ')
+    if ask == '1':
+        unattended('KMS38-NoEditionChange')
+    elif ask == '2':
+        unattended('KMS38-RemoveProtection')
+    else:
+        print('plz select a valid option')
 
 
 def KMS():
-    path = get_resource_path(os.path.join("activation", "KMS.cmd"))
-    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
-    run_on_desktop(os.path.join(desktop_path, "KMS.cmd"))
+    clear()
+    print('1. Windows KMS online activation')
+    print('2. Microsoft office KMS')
+    print('3. Both')
+    print('4. uninstall KMS')
+    print('5. Auto KMS renewal')
+    ask = input('\nEnter what u want to activate > ')
+    if ask == '1':
+        unattended('KMS-Windows')
+    elif ask == '2':
+        unattended('KMS-Office')
+    elif ask == '3':
+        unattended('KMS-WindowsOffice')
+    elif ask == '4':
+        unattended('KMS-Uninstall')
+    elif ask == '5':
+        unattended('KMS-ActAndRenewalTask')
+    else:
+        print('plz select a valid option')
 
 
 def OEM():
@@ -195,7 +230,10 @@ while True:
         print(Fore.BLUE + 'Thanks for using my tool\ncleaning up things for u' + Style.RESET_ALL)
         desktop_path = os.path.join(os.path.expanduser(
             "~"), "Desktop", "Activation_Files")
-        shutil.rmtree(desktop_path)
+        try:
+            shutil.rmtree(desktop_path)
+        except:
+            pass
         print(Fore.LIGHTMAGENTA_EX +
               'Plz checkout my other works too' + Style.RESET_ALL)
         break
