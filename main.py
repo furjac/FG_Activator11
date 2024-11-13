@@ -23,137 +23,11 @@ SOFTWARE.
 """
 from colorama import Fore, Style
 import os
-import webbrowser
-import subprocess
-import sys
 import shutil
 
 
 def clear():
     os.system('cls')
-
-
-def unattended(para):
-    process = subprocess.Popen(
-        ["powershell", "-Command", f'& ([ScriptBlock]::Create((irm https://massgrave.dev/get))) /{para}'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = process.communicate()
-    process.wait()
-
-
-def get_resource_path(relative_path):
-    try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
-    except Exception:
-        # In development, use the script's directory
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
-
-
-def copy_to_desktop(source_path, destination_folder):
-    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
-    destination_path = os.path.join(desktop_path, destination_folder)
-
-    # Create destination folder on the desktop
-    os.makedirs(destination_path, exist_ok=True)
-
-    # Copy files to the destination folder
-    for file_name in os.listdir(source_path):
-        full_file_path = os.path.join(source_path, file_name)
-        if os.path.isfile(full_file_path):
-            shutil.copy(full_file_path, destination_path)
-
-    return destination_path
-
-
-def run_on_desktop(file_path):
-    process = subprocess.Popen(["cmd.exe", "/c", file_path],
-                               shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = process.communicate()
-    process.wait()
-
-
-def status_check(file_path):
-    subprocess.call(["cmd.exe", "/c", file_path],
-                    shell=True)
-
-
-def windows():
-    unattended('HWID-NoEditionChange')
-
-
-def office():
-    clear()
-    print('1. Install ohook')
-    print('2. Uninstall ohook')
-    ask = input('Enter what u want to do > ')
-    if ask == '1':
-        unattended('Ohook')
-    elif ask == '2':
-        unattended('Ohook-Uninstall')
-    else:
-        print('Plz choose a valid option')
-
-
-def trouble():
-    path = get_resource_path(os.path.join("activation", "troubleshoot.cmd"))
-    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
-    run_on_desktop(os.path.join(desktop_path, "troubleshoot.cmd"))
-
-
-def change():
-    path = get_resource_path(os.path.join("activation", "change_editions.cmd"))
-    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
-    run_on_desktop(os.path.join(desktop_path, "change_editions.cmd"))
-
-
-def KMS38():
-    clear()
-    print('1. Windows KMS38 activation')
-    print('2. remove protection KMS38')
-    ask = input('\nEnter what u want to activate > ')
-    if ask == '1':
-        unattended('KMS38-NoEditionChange')
-    elif ask == '2':
-        unattended('KMS38-RemoveProtection')
-    else:
-        print('plz select a valid option')
-
-
-def KMS():
-    clear()
-    print('1. Windows KMS online activation')
-    print('2. Microsoft office KMS')
-    print('3. Both')
-    print('4. uninstall KMS')
-    print('5. Auto KMS renewal')
-    ask = input('\nEnter what u want to activate > ')
-    if ask == '1':
-        unattended('KMS-Windows')
-    elif ask == '2':
-        unattended('KMS-Office')
-    elif ask == '3':
-        unattended('KMS-WindowsOffice')
-    elif ask == '4':
-        unattended('KMS-Uninstall')
-    elif ask == '5':
-        unattended('KMS-ActAndRenewalTask')
-    else:
-        print('plz select a valid option')
-
-
-def OEM():
-    path = get_resource_path(os.path.join(
-        "activation", "Extract_OEM_Folder.cmd"))
-    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
-    run_on_desktop(os.path.join(desktop_path, "Extract_OEM_Folder.cmd"))
-
-
-def status():
-    path = get_resource_path(os.path.join("activation", "status.cmd"))
-    desktop_path = copy_to_desktop(os.path.dirname(path), "Activation_Files")
-    status_check(os.path.join(desktop_path, "status.cmd"))
 
 
 # Define colors
@@ -193,38 +67,43 @@ while True:
 
     if op == '1':
         clear()
-        windows()
+        print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
         input("Press Enter to continue...")
     elif op == '2':
         clear()
-        office()
+        print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
         input('Press enter to continue....')
     elif op == '3':
         clear()
-        trouble()
+        print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
         input('Press enter to continue...')
     elif op == '4':
         clear()
-        change()
+        print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
         input('Press enter to continue...')
     elif op == '5':
         clear()
-        KMS()
+        print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
         input('Press enter to continue...')
     elif op == '6':
         clear()
-        KMS38()
+        print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
         input('Press enter to continue...')
     elif op == '7':
         clear()
-        OEM()
+        print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
         input('Press enter to continue...')
     elif op == '8':
         clear()
-        status()
+        print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
         input('Press enter to continue...')
     elif op == '9':
-        webbrowser.open('https://fg-repacks.site/p/donate.html')
+        clear()
+        print('you can donate in upi/crypto:')
+        print('UPI: furjack@ybl')
+        print('XMR: 42GyVekn3tufQjYQS9iN79g9MhzfLDgiu3HVAifDfNuW8MA2bi2UPagXo5ZPzA8rupERybjWsMv5HP7azinFbBxcFf9FW86')
+        print('BTC: 14GSZ1293s65JjytCjMz3AFNSUa4ZVN2V')
+        input('Press enter to continue...')
     elif op == '0':
         clear()
         print(Fore.BLUE + 'Thanks for using my tool\ncleaning up things for u' + Style.RESET_ALL)
