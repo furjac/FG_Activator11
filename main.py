@@ -24,6 +24,8 @@ SOFTWARE.
 from colorama import Fore, Style
 import os
 import shutil
+import tkinter as tk
+from tkinter import messagebox
 
 
 def clear():
@@ -55,6 +57,17 @@ menu = f"""
             {CYAN}{"-" * 92}
 """
 print(RESET)
+def message():
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+
+        # Display the message box
+    messagebox.showinfo("Project Under Development", 
+                            "Sorry, the software is under development. The developer can't keep up with the project.\nDonate to keep the project up and running.")
+
+        # Close the tkinter window after the user closes the message box
+    root.quit()
+
 while True:
     clear()  # Clear the screen
     print(menu + '\n\n\n\n')
@@ -68,40 +81,48 @@ while True:
     if op == '1':
         clear()
         print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
+        message()
         input("Press Enter to continue...")
     elif op == '2':
         clear()
         print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
+        message()
         input('Press enter to continue....')
     elif op == '3':
         clear()
         print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
+        message()
         input('Press enter to continue...')
     elif op == '4':
         clear()
         print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
+        message()
         input('Press enter to continue...')
     elif op == '5':
         clear()
         print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
+        message()
         input('Press enter to continue...')
     elif op == '6':
         clear()
         print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
+        message()
         input('Press enter to continue...')
     elif op == '7':
         clear()
         print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
+        message()
         input('Press enter to continue...')
     elif op == '8':
         clear()
         print('Sorry the software is under development the developer cant keep up the project\n donate to keep the project up and running')
+        message()
         input('Press enter to continue...')
     elif op == '9':
         clear()
         print('you can donate in upi/crypto:')
         print('UPI: furjack@ybl')
-        print('XMR: 42GyVekn3tufQjYQS9iN79g9MhzfLDgiu3HVAifDfNuW8MA2bi2UPagXo5ZPzA8rupERybjWsMv5HP7azinFbBxcFf9FW86')
+        print('XMR: ')
         print('BTC: 14GSZ1293s65JjytCjMz3AFNSUa4ZVN2V')
         input('Press enter to continue...')
     elif op == '0':
