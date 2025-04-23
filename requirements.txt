@@ -1,1 +1,3 @@
-colorama
+# No external dependencies required - using built-in Tkinter 
+customtkinter
+pillow
